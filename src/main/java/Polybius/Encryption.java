@@ -1,4 +1,4 @@
-package org.example;
+package Polybius;
 
 public class Encryption {
     private String text = "";
@@ -14,8 +14,6 @@ public class Encryption {
             {' ', '.', ',', ')'},
             {'(', '?', '!', '_', '@', '1', '2', '3', '4', '5'},
             {'6', '7', '8', '9', '0', '*', '/', '+', '-', '\\'},
-
-
     };
 
     public Encryption(String text){
@@ -32,16 +30,24 @@ public class Encryption {
             this.encryptionText += charIn(text.charAt(i));
         }
     }
-
     public String charIn(char c){
         String rez = "";
+        String rezs ="";
         for(int i = 0; i < key.length; ++i){
             for(int j = 0; j < key[i].length; ++j){
                 if(key[i][j] == c){
                     rez = rez + (i + "" + j + " ");
+
+                    if (i == 8){
+                        rezs += key[i-1][j];
+                    }
+                    if(i != 8){
+                        rezs += key[i+1][j];
+                    }
                 }
             }
         }
-        return rez;
+        System.out.print(rezs);
+        return (rez);
     }
 }
