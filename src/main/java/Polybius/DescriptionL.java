@@ -1,11 +1,11 @@
 package Polybius;
 
 
-public class Description{
+public class DescriptionL {
     public String parseText;
     public String descriptionText;
 
-    public Description(String text){
+    public DescriptionL(String text){
         delAllSpace(text);
         outString(this.parseText);
     }
@@ -26,7 +26,7 @@ public class Description{
             if(i % 2  == 0){
                 x = Integer.parseInt(String.valueOf(s.charAt(i)));
                 y = Integer.parseInt(String.valueOf(s.charAt(i+1)));
-                result += Encryption.key[x][y];
+                result += EncryptionL.key[x][y];
             }
         }
         this.descriptionText = result;

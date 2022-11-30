@@ -1,10 +1,10 @@
 package Polybius;
 
-public class Encryption {
+public class EncryptionL {
     private String text = "";
     private String  encryptionText = "";
 
-    protected static char[][] key = {
+    static char[][]key = {
             {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'},
             {'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T'},
             {'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd'},
@@ -14,9 +14,9 @@ public class Encryption {
             {' ', '.', ',', ')'},
             {'(', '?', '!', '_', '@', '1', '2', '3', '4', '5'},
             {'6', '7', '8', '9', '0', '*', '/', '+', '-', '\\'},
-    };
+            };
 
-    public Encryption(String text){
+    public EncryptionL(String text){
         this.text = text;
         findInArr(this.text);
     }
@@ -31,6 +31,7 @@ public class Encryption {
         }
     }
     public String charIn(char c){
+
         String rez = "";
         String rezs ="";
         for(int i = 0; i < key.length; ++i){
@@ -38,10 +39,10 @@ public class Encryption {
                 if(key[i][j] == c){
                     rez = rez + (i + "" + j + " ");
 
-                    if (i == 8){
+                    if (i == 9){
                         rezs += key[i-1][j];
                     }
-                    if(i != 8){
+                    if(i != 9){
                         rezs += key[i+1][j];
                     }
                 }

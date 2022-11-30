@@ -2,6 +2,7 @@ package Polybius;
 
 
 import java.io.*;
+import java.util.Scanner;
 
 public class Main {
     static final String filePathWriteWord= "StartWord.txt";
@@ -17,28 +18,42 @@ public class Main {
 
         boolean choice = true;
         BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
+        Scanner in = new Scanner(System.in);
+
+        System.out.print("Choice language English(1) or Ukraine(2) : ");
+        int ch = in.nextInt();
 
         while (choice){
             System.out.print("Enter word : ");
-
-
             String tempS = reader.readLine();
-
             if(tempS.equals("exit")){
                 choice = false;
             }else {
                 main.WriteWord(filePathWriteWord , tempS);
 
-                System.out.print("Encryption number :");
-                Encryption enc = new Encryption(tempS);
-                System.out.println("");
-                System.out.println("Encryption number : " + enc.getEncryptionText());
-                main.WriteEncryption(filePathEncryption ,enc.getEncryptionText() );
+                if (ch == 1){
+                    System.out.print("Encryption : ");
+                    EncryptionL encl = new EncryptionL(tempS);
+                    System.out.println("");
+                    System.out.println("Encryption number : " + encl.getEncryptionText());
+                    main.WriteEncryption(filePathEncryption ,encl.getEncryptionText() );
 
-                Description desc = new Description(enc.getEncryptionText());
-                System.out.println("Description : " + desc.getDescriptionText());
-                main.WriteDescription(filePathDescription ,desc.getDescriptionText() );
-                System.out.println("");
+                    DescriptionL desc = new DescriptionL(encl.getEncryptionText());
+                    System.out.println("Description : " + desc.getDescriptionText());
+                    main.WriteDescription(filePathDescription ,desc.getDescriptionText() );
+                    System.out.println("");
+                }else {
+                    System.out.print("Encryption : ");
+                    EncryptionK enck = new EncryptionK(tempS);
+                    System.out.println("");
+                    System.out.println("Encryption number : " + enck.getEncryptionText());
+                    main.WriteEncryption(filePathEncryption ,enck.getEncryptionText() );
+
+                    DescriptionL desck = new DescriptionL(enck.getEncryptionText());
+                    System.out.println("Description : " + desck.getDescriptionText());
+                    main.WriteDescription(filePathDescription ,desck.getDescriptionText() );
+                    System.out.println("");
+                }
             }
         }
         reader.close();
