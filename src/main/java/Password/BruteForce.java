@@ -10,7 +10,7 @@ public class BruteForce {
         BruteForce main = new BruteForce();
         main.createFile();
         long time = System.currentTimeMillis();
-        bruteForce(4);
+        bruteForce(3);
         System.out.println((System.currentTimeMillis() - time) / 1000);
     }
 
@@ -21,7 +21,7 @@ public class BruteForce {
             password[i] = 0;
             finalPassword[i] = "";
         }
-        String pass = "DIMA";
+        String pass = "CAT";
         return computePermutations(size, password, 0, pass);
     }
 
